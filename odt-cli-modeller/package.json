@@ -1,0 +1,17 @@
+{
+  "name": "odt-cli-modeller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "drdrej",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "jq": "^1.7.2",
+    "json-tools": "^0.2.31",
+    "moment": "^2.18.1",
+    "node-jq": "^0.5.4"
+  }
+}

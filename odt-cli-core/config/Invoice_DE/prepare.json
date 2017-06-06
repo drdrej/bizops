@@ -1,0 +1,31 @@
+{
+	"title": "Andreas Siebert",
+	"subtitle": "IT-Consultant",
+	"logo": "path-to.jpg",
+	"company": 
+	{
+		"street": "Musterstrasse 00",
+		"zip": "50000",
+		"city": "Köln",
+		"phone": "+49 (0) 176 0000 0000",
+		"email": "ask@touchableheroes.com",
+		"vatEuId": "DE000000000"
+	},
+
+	"customer": 
+	{
+		"name": "Customers Name GmbH",
+		"street": "Musterstrasse 10",
+		"zip": "50000",
+		"city": "Köln"
+	},
+	
+	"payment": 
+		{
+			"bank": "Stadtsparkasse Köln/Bonn",
+			"bankID": "00000000",
+			"bankUID": "0000000000",
+			"bic": "000000",
+			"iban": "DE00 0000 0000 0000 0000 00"
+		}
+}
