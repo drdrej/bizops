@@ -1,0 +1,24 @@
+{
+  "name": "fabrique-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.0.2",
+    "handlebars": "^4.0.10",
+    "load-json-file": "^2.0.0",
+    "mathjs": "^3.13.3",
+    "mocha": "^3.4.2",
+    "moment": "^2.18.1",
+    "node-jq": "^0.5.4",
+    "string": "^3.3.3",
+    "synchronize": "^2.0.0",
+    "underscore": "^1.8.3"
+  }
+}
