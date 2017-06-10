@@ -1,0 +1,12 @@
+{
+  "name" : "abc",
+  "born" : "28.10.1974",
+  "hp"   : 99,
+  "active" : true,
+  "bignr" : "111111111111111.11",
+
+  "address" : {
+    "stree" : "Musterstrasse"
+  }
+}
+

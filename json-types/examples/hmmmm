@@ -1,0 +1,13 @@
+
+
+x.json -> y.json : {
+   each( ".ABC" )
+      .create( "TYPE.1" )
+
+}
+
+          rules       mapping
+             |           |
+input -> validate? -> extract -> transform -> validate? output
+
+input[ 1... N ]

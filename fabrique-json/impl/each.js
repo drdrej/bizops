@@ -9,6 +9,8 @@ module.exports = function( where ) {
     // var S = require( "string" );
 
     return {
+        query : where,
+
         process : function( input ) {
             if( _.isUndefined( where ) ) {
                 return input;
