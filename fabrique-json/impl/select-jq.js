@@ -20,6 +20,7 @@ module.exports = function( src, where ) {
     ) {
         var rval = [];
         rval.push( src );
+
         return rval;
     }
 

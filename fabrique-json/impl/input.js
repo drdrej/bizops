@@ -1,9 +1,8 @@
 /**
- * Created by asiebert on 07.06.2017.
+ * Created by asiebert on 09.06.2017.
  */
 
-
-module.exports = function( each ) {
+module.exports = function( input, each ) {
 
     return {
 
