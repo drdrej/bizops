@@ -1,23 +1,52 @@
 /**
  * Created by asiebert on 08.06.2017.
  */
-// var expect = require( 'chai' ).expect;
+
 var assert = require('chai').assert;
 
-describe("1 min example", function() {
-    describe("how to select and handle some elements", function() {
-        it("handle initialization.", function( done ) {
-            var select = require( '../impl/each' );
+describe("Process examples", function() {
 
-            object(
-                each( '' )
-            );
+        describe("process - example 1", function () {
 
-            // assert.isNotNull(select, "some kind of object is created");
-            // assert.typeOf( select, "function" );
+            it("handle initialization.", function (done) {
+                var load = require('../impl/load');
+                var each = require( '../impl/each');
 
-            done();
+                var input = {
+                    "Invoices" : [
+                        {
+                          value : 10
+                        },
+                        {
+                            value : 22
+                        }
+                    ],
+                    name: "Test"
+                };
+
+                load(input).process(
+                    each(".Invoices"),
+                    function (nodes) {
+                        console.log("nodes selected: ");
+                        console.log(nodes);
+
+                        done();
+                    }
+                );
+
+            });
         });
+
     });
 
-});
+
+
+/*.
+ create({
+ value: " Hello my nam is {{name}}."
+ })
+
+ .
+ dump().
+ then().
+ error()*/
