@@ -21,7 +21,7 @@ module.exports = function( input ) {
                 }
              */
 
-                selection.process( this, then, error );
+                selection.process( input, then, error );
         }
     };
 

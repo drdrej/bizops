@@ -7,11 +7,13 @@ module.exports = function( src, where, then, error ) {
     var sync = require( 'synchronize' );
     var _ = require( 'underscore' );
 
+    var callback = require( './callback' );
+
     if( _.isUndefined( src )
         || _.isNull( src )
     ) {
-        // console.error( "> no params! please fix." );
-        return [];
+        callback( then ).exec([]);
+        return;
     }
 
     if( _.isUndefined( where )
@@ -20,34 +22,27 @@ module.exports = function( src, where, then, error ) {
         var rval = [];
         rval.push( src );
 
-        return rval;
+        callback(then).exec(rval);
+        return;
     }
 
-    /*
-    var x;
-    sync.fiber( function() {
-
-        //
-
-        return sync.await(
-
-            function () { */
     jq.run(where, src, {
         input: 'json',
         output: 'json'
     })
     .then(function (output) {
         console.log(output);
-        then( output );
+        var rval = (_.isNull( output) ?  [] : output);
+
+        callback(then).exec( output );
+
+        return rval;
     })
     .catch(function (err) {
         console.error(err);
-        error(err);
+        callback(error).exec(err);
+
+        return null;
     });
-            //}
-            /*,
-            sync.defer());
-            */
-    //});
 
 };

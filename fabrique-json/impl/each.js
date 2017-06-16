@@ -6,6 +6,7 @@ var load = require('load-json-file');
 
 module.exports = function( where ) {
     var _ = require( "underscore" );
+    var callback = require( './callback' );
     // var S = require( "string" );
 
     return {
@@ -13,7 +14,7 @@ module.exports = function( where ) {
 
         process : function( input, then, error ) {
             if( _.isUndefined( where ) ) {
-                then(input);
+                callback(then).exec(input);
                 return;
             }
 
@@ -23,12 +24,11 @@ module.exports = function( where ) {
             }
 
             if( _.isFunction( where ) ) {
-                then( where(input));
+                callback(then).exec( where(input) );
                 return;
             }
 
             if( _.isObject( where ) ) {
-//                return function() {
                     var src = null;
 
                     if( _.has( where, "file" ) ) {
@@ -41,13 +41,12 @@ module.exports = function( where ) {
                         select( src, where.query, then);
                         return;
                     } else {
-                        then( src );
+                        callback(then).exec( src );
                         return;
                     }
-//                };
             }
 
-            error( "Can't understand where-Clause: " + where );
+            callback( error ).exec( "Can't understand where-Clause: " + where );
         }
     };
 };

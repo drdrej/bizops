@@ -20,24 +20,28 @@ describe("select for jq", function() {
     describe("invalid selections", function() {
         var select = require( '../impl/select-jq' );
 
-        it("can handle no param call", function() {
-            var x = select();
+        it("can handle no param call", function(done) {
+            select(null, null, function( result ){
+                assert.typeOf( result, "array", "return value should be an array" );
+                assert.lengthOf( result, 0, "return value should be empty" );
 
-            assert.typeOf( x, "array", "return value should be an array" );
-            assert.lengthOf( x, 0, "return value should be empty" );
+                done();
+            });
         });
 
-        it("can handle param:what", function() {
+        it("can handle param:what", function( done ) {
             var what = {
                 name: "testObj"
             };
 
-            var x = select(what);
+            select(what, null, function( result ) {
+                assert.typeOf( result, "array", "return value should be an array" );
+                assert.lengthOf( result, 1, "return value should have 1 object" );
 
-            assert.typeOf( x, "array", "return value should be an array" );
-            assert.lengthOf( x, 1, "return value should have 1 object" );
+                assert.include( result, what, "same same" );
 
-            assert.include( x, what, "same same" );
+                done();
+            });
         });
     });
 
