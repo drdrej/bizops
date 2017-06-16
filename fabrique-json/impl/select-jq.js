@@ -2,7 +2,7 @@
  * Created by asiebert on 08.06.2017.
  */
 
-module.exports = function( src, where ) {
+module.exports = function( src, where, then, error ) {
     var jq = require('node-jq');
     var sync = require( 'synchronize' );
     var _ = require( 'underscore' );
@@ -14,8 +14,7 @@ module.exports = function( src, where ) {
         return [];
     }
 
-    if(
-        _.isUndefined( where )
+    if( _.isUndefined( where )
         || _.isNull( where )
     ) {
         var rval = [];
@@ -24,31 +23,31 @@ module.exports = function( src, where ) {
         return rval;
     }
 
-    return sync.await(
-        function( ) {
-            jq.run( where, src,  {
-                input: 'json',
-                output: 'json'
-            })
-                .then( function(output)  {
-                    console.log(output);
-                })
-                .catch(function(err)  {
-                    console.error(err);
-                })
-        },
-        sync.defer());
-
-
-
-
     /*
-     const filter = '.abilities[].moves'
-     const jsonPath = '/path/to/bulbasaur.json'
-     const options = {}
+    var x;
+    sync.fiber( function() {
 
+        //
 
-     */
+        return sync.await(
 
+            function () { */
+    jq.run(where, src, {
+        input: 'json',
+        output: 'json'
+    })
+    .then(function (output) {
+        console.log(output);
+        then( output );
+    })
+    .catch(function (err) {
+        console.error(err);
+        error(err);
+    });
+            //}
+            /*,
+            sync.defer());
+            */
+    //});
 
 };

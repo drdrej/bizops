@@ -24,13 +24,13 @@ describe("Process examples", function() {
                     name: "Test"
                 };
 
-                load(input).process(
-                    each(".Invoices"),
-                    function (nodes) {
-                        console.log("nodes selected: ");
-                        console.log(nodes);
+                load(input)
+                    .process( each(".Invoices"),
+                        function (nodes) {
+                           console.log("nodes selected: ");
+                           console.log(nodes);
 
-                        done();
+                           done();
                     }
                 );
 

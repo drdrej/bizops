@@ -11,21 +11,24 @@ module.exports = function( where ) {
     return {
         query : where,
 
-        process : function( input ) {
+        process : function( input, then, error ) {
             if( _.isUndefined( where ) ) {
-                return input;
+                then(input);
+                return;
             }
 
             if( _.isString( where ) ) {
-                return select( input, where );
+                select( input, where, then );
+                return;
             }
 
             if( _.isFunction( where ) ) {
-                return where(input);
+                then( where(input));
+                return;
             }
 
             if( _.isObject( where ) ) {
-                return function() {
+//                return function() {
                     var src = null;
 
                     if( _.has( where, "file" ) ) {
@@ -35,14 +38,16 @@ module.exports = function( where ) {
                     }
 
                     if( _.has( where, "query" ) ) {
-                        return select( src, where.query );
+                        select( src, where.query, then);
+                        return;
                     } else {
-                        return src;
+                        then( src );
+                        return;
                     }
-                };
+//                };
             }
 
-            throw "Can't understand where-Clause: " + where;
+            error( "Can't understand where-Clause: " + where );
         }
     };
 };
