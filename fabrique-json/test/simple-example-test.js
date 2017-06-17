@@ -10,7 +10,7 @@ describe("Process examples", function() {
 
             it("handle initialization.", function (done) {
                 var load = require('../impl/load');
-                var each = require( '../impl/each');
+                var select = require( '../impl/select');
 
                 var input = {
                     "Invoices" : [
@@ -25,7 +25,7 @@ describe("Process examples", function() {
                 };
 
                 load(input)
-                    .process( each(".Invoices"),
+                    .process( select(".Invoices"),
                         function (nodes) {
                            console.log("nodes selected: ");
                            console.log(nodes);
@@ -40,7 +40,7 @@ describe("Process examples", function() {
 
             it("SELECT - TRANSFORM", function (done) {
                 var load = require('../impl/load');
-                var each = require( '../impl/each');
+                var each = require( '../impl/select');
 
                 var input = {
                     "Invoices" : [

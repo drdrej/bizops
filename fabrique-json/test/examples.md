@@ -15,3 +15,23 @@ input( i ,
     .all( jq2 )
     .process( fnc, opts ) // allgemeine impl zum verarbeiten eines knotens. return sich selbst einen ersatzwert oder einen fehler/exception.
     .dump( "/path/{{handlebars}}.json" )
+
+    .select().all()
+             .first()
+             .one(i)
+             .select(
+
+             )
+
+             .object()
+             .transform()
+             .validate()
+             .render()
+             .dump()
+             .split(
+                 select()...,
+                 select()...,
+             )
+
+
+
