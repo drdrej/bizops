@@ -1,8 +1,5 @@
-/**
- * Created by asiebert on 07.06.2017.
- */
 
-
+## api -  idea
 input( i ,
     each()       // for each node n1 {
     .each( jq1 )  //   for each
@@ -18,10 +15,3 @@ input( i ,
     .all( jq2 )
     .process( fnc, opts ) // allgemeine impl zum verarbeiten eines knotens. return sich selbst einen ersatzwert oder einen fehler/exception.
     .dump( "/path/{{handlebars}}.json" )
-;
-
-
-// json types:
-
-
-{ date( "dd.mm.YYYY" )
