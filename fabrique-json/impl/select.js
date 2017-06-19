@@ -11,6 +11,12 @@ module.exports = function( where ) {
 
     return {
         query : where,
+        quantor : 'all',
+
+        all: function( ) {
+            this.quantor = 'all';
+            return this;
+        },
 
         process : function( input, then, error ) {
             if( _.isUndefined( where ) ) {

@@ -4,16 +4,16 @@
 
 var assert = require('chai').assert;
 
+var deps = require('../impl/dependencies');
+
+
 describe("Process examples", function() {
 
         describe("process - example 1", function () {
 
-            it("handle initialization.", function (done) {
-                var deps = require('../impl/dependencies');
-
+            it("handle initialization.",
+                function (done) {
                 deps( function( ) {
-                    // var load = require('../impl/load');
-                    // var select = require( '../impl/select');
 
                     var input = {
                         "Invoices" : [
@@ -39,12 +39,7 @@ describe("Process examples", function() {
                 })
             });
 
-
-
-            it("SELECT - TRANSFORM", function (done) {
-                var load = require('../impl/load');
-                var each = require( '../impl/select');
-
+            it("can select.all", function (done) {
                 var input = {
                     "Invoices" : [
                         {
@@ -59,16 +54,13 @@ describe("Process examples", function() {
 
                 load(input)
                     .process(
-                        each(".Invoices"),
-                            /*.each()
-                            .transform( function(node) {
-                                return {
-                                    val : node.value
-                                }
-                            }),*/
-                        function (nodes) {
+                        select(".Invoices").all(),
+                        function ( result ) {
                             console.log("nodes selected: ");
-                            console.log(nodes);
+                            console.log( result );
+
+                            assert.typeOf( result, "array", "return value should be an array" );
+                            assert.lengthOf( result, 2, "return value should be empty" );
 
                             done();
                         }
