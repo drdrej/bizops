@@ -9,31 +9,34 @@ describe("Process examples", function() {
         describe("process - example 1", function () {
 
             it("handle initialization.", function (done) {
-                var load = require('../impl/load');
-                var select = require( '../impl/select');
+                var deps = require('../impl/dependencies');
 
-                var input = {
-                    "Invoices" : [
-                        {
-                          value : 10
-                        },
-                        {
-                            value : 22
+                deps( function( ) {
+                    // var load = require('../impl/load');
+                    // var select = require( '../impl/select');
+
+                    var input = {
+                        "Invoices" : [
+                            {
+                              value : 10
+                            },
+                            {
+                                value : 22
+                            }
+                        ],
+                        name: "Test"
+                    };
+
+                    load(input)
+                        .process( select(".Invoices"),
+                            function (nodes) {
+                               console.log("nodes selected: ");
+                               console.log(nodes);
+
+                               done();
                         }
-                    ],
-                    name: "Test"
-                };
-
-                load(input)
-                    .process( select(".Invoices"),
-                        function (nodes) {
-                           console.log("nodes selected: ");
-                           console.log(nodes);
-
-                           done();
-                    }
-                );
-
+                    );
+                })
             });
 
 
