@@ -85,6 +85,13 @@ module.exports = function (where) {
             return this;
         },
 
+        transfer: function( factory )  {
+            var transfer = require( './transfer' );
+
+            transfer( factory );
+            return this;
+        },
+
         _prepareThen: function (fnc) {
             var q = this.quantor;
             var qFnc = this.quantorCallback;
@@ -101,7 +108,7 @@ module.exports = function (where) {
                 if (!_.isFunction(handler)) {
                     fnc(selected);
                     console.log( "quantor-resulst supports only functions. exec done(selected)" );
-                    return;
+                    return ;
                 }
 
                 handler(selected, qFnc, fnc);

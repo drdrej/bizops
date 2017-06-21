@@ -7,9 +7,9 @@ var assert = require('chai').assert;
 var deps = require('../impl/dependencies');
 
 
-describe("Process examples", function () {
+describe("Examples", function () {
 
-    describe("process - example", function () {
+    describe("basic test", function () {
 
         it("handle select.each.",
             function (done) {
