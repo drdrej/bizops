@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.4.1",
     "chai": "^4.0.2",
     "fibers": "^2.0.0",
     "hamsters.js": "^4.1.4",

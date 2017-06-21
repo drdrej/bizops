@@ -11,7 +11,7 @@ describe("Process examples", function() {
 
         describe("process - example 1", function () {
 
-            it("handle initialization.",
+            it("handle select.first.",
                 function (done) {
                 deps( function( ) {
 
@@ -35,7 +35,6 @@ describe("Process examples", function() {
                                console.log( result );
 
                                assert.typeOf( result, "object", "return value should be an object" );
-                               // assert.lengthOf( result, 0, "return value should be empty" );
 
                                done();
                         }
